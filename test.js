@@ -58,9 +58,11 @@ const data=[18.80,18.90,18.70,18.60];
     return b;
   }
   
-  let dataA = 10;
+  let dataA = data[data.length-1];
   let dataB = 20;
   let delta = 40;
   dataB = compareValues(dataA, dataB, delta);
+
+  console.log(dataA)
   console.log(dataB); // 10
   
