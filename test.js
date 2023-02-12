@@ -8,7 +8,7 @@ const kf = new KalmanFilter();
 // kf.filter(20);
 var data1 = 1380.80;
 // console.log(data1)                   
-const data=[18.80,18.90,18.70,18.60];
+
 // function getAvg(grades) {
 //     const total = grades.reduce((acc, c) => acc + c, 0);
 //     return total / grades.length;
@@ -50,19 +50,21 @@ const data=[18.80,18.90,18.70,18.60];
 //   let threshold = 5;
 //   valueB = compareValues(valueA, valueB, threshold);
 //   console.log(valueB); //
-
-  function compareValues(a, b, delta) {
+const data=[20,21,20.80,20.60];
+  function filterValues(a, b, delta) {
     if (Math.abs(a - b) > delta) {
-      b = a;
+        kf.filter(20);
+        kf.filter(21);
+        kf.filter(20.80);
+        var av = kf.filter(20.60);
+      b = av;
     }
     return b;
   }
-  
-  let dataA = data[data.length-1];
-  let dataB = 20;
+  let satuDataSebelumny = data[data.length-1];
+  let databaru = 20.80;
   let delta = 40;
-  dataB = compareValues(dataA, dataB, delta);
 
-  console.log(dataA)
-  console.log(dataB); // 10
+  databaru = filterValues(satuDataSebelumny, databaru,delta);
+  console.log(databaru);
   
